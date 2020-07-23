@@ -2,15 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Pokemon from './Pokemon';
 const axios = require('axios');
 
-export default function PokemonList() {
+export default function PokemonList(props) {
   const [pokeData, setData] = useState([]);
-  const [pokeName, setName] = useState([]);
-
-  // function extractPredecessor(url, setData) {
-  //   axios.get(url)
-  //     .then(res => setData())
-  //   .catch(err => console.log(err, "Error"))
-  // }
+  const [page, setPage] = useState(0);
 
   const extractTypes = typesArr => {
     let typesList = [];
@@ -52,12 +46,14 @@ export default function PokemonList() {
     return (
       <Pokemon
         key={pokemon.id}
+        id={pokemon.id}
         name={pokemon.name}
         height={pokemon.height}
         weight={pokemon.weight}
         sprite={pokemon.sprite}
         types={pokemon.types}
         species={pokemon.species}
+        page={props.page}
       />
     )
   })
