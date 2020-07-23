@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../../src/Pokemon.scss';
 
 export default function Pokemon(props) {
   const [ancestor, setAncestor] = useState([]);
@@ -13,25 +14,37 @@ export default function Pokemon(props) {
       .catch(err => console.log(err))
   }, [])
 
-  const assignClassName = id => {
-    if (id <= 50) {
-      return 'first-page';
+  console.log(page)
+
+  const assignClassName = (id, page) => {
+    if (page === 1) {
+      if (id <= 50) {
+        return 'show';
+      }
+      return 'hide';
     }
 
-    if (id > 50 && id <= 100) {
-      return 'second-page';
+    if (page === 2) {
+      if (id > 50 && id <= 100) {
+        return 'show';
+      }
+
+      return 'hide';
     }
 
-    if (id > 100 && id <= 150) {
-      return 'third-page';
+    if (page === 3) {
+      if (id >= 100) {
+        return 'show'
+      }
+      return 'hide'
     }
   }
   return (
-    <div id={id} className={assignClassName(id)}>
+    <div id={id} className={assignClassName(id, page)}>
       <div>{name}</div>
       <div>{height}</div>
       <div>{weight}</div>
-      <img src={sprite} />
+      <img src={sprite}/>
     </div>
   )
 }

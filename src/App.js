@@ -5,11 +5,16 @@ import PokemonList from '../src/Components/PokemonList'
 
 function App() {
 
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
+
+  const togglePage = () => {
+    return setPage(page + 1)
+  }
 
   return (
     <div className="App">
-      <PokemonList />
+      <p onClick={togglePage}>click me</p>
+      <PokemonList page={page} />
     </div>
   );
 }

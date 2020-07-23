@@ -4,7 +4,6 @@ const axios = require('axios');
 
 export default function PokemonList(props) {
   const [pokeData, setData] = useState([]);
-  const [page, setPage] = useState(0);
 
   const extractTypes = typesArr => {
     let typesList = [];
