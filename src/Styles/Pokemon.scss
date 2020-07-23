@@ -8,3 +8,31 @@
   align-items: center;
   width: 50em;
 }
+
+.img {
+  margin-bottom: 1em;
+}
+
+.name-sprite {
+  border-right: solid;
+  border-left: solid;
+  width: 15em;
+}
+
+.name-sprite p {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-self: center;
+  margin-left: 5em;
+  line-height: 0px;
+}
+
+.description p {
+  line-height: 0em;
+}

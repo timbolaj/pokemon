@@ -4,7 +4,7 @@ import '../Styles/Pokemon.scss';
 
 export default function Pokemon(props) {
   const [ancestor, setAncestor] = useState([]);
-  const { id, name, height, weight, sprite, types, species, page } = props
+  const { id, name, height, weight, sprite, types, species, page, setPokemon, pokemonClicked, evolvesTo } = props
 
   useEffect(() => {
     axios.get(species)
@@ -13,8 +13,6 @@ export default function Pokemon(props) {
       })
       .catch(err => console.log(err))
   }, [])
-
-  console.log(page)
 
   const assignClassName = (id, page) => {
     if (page === 1) {
@@ -60,10 +58,25 @@ export default function Pokemon(props) {
       return 'hide';
     }
   }
+
+  const capitalizeFirstLetter = word => {
+    return word.replace(word.charAt(0), word.charAt(0).toUpperCase());
+  }
+
   return (
-    <div id={id} className={assignClassName(id, page)}>
-      <img src={sprite}/>
-      <div>{name}</div>
+    <div id={id} className={assignClassName(id, page)} onClick={() => setPokemon(id)}>
+      <div className="name-sprite">
+        <img src={sprite} />
+        <p>{name.toUpperCase()}</p>
+      </div>
+
+      {pokemonClicked === id &&
+        <div className="description">
+          <p>{capitalizeFirstLetter(name)} is a {types[0]}-type pokemon. &nbsp;</p>
+          <p>It has a weight of {weight} and a height of {height}.</p>
+          <p>{capitalizeFirstLetter(name)} evolves into {evolvesTo}.</p>
+        </div>
+      }
     </div>
   )
 }

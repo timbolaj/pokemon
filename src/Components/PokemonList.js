@@ -4,6 +4,8 @@ const axios = require('axios');
 
 export default function PokemonList(props) {
   const [pokeData, setData] = useState([]);
+  const [pokemonClicked, setPokemon] = useState();
+  const evolutionChain = {};
 
   const extractTypes = typesArr => {
     let typesList = [];
@@ -13,9 +15,19 @@ export default function PokemonList(props) {
     return typesList;
   }
 
+  const getEvolution = url => {
+    return axios.get(url)
+      .then(res => {
+        if (res.data.evolves_from_species) {
+          evolutionChain[res.data.name] = res.data.evolves_from_species.name
+          console.log(evolutionChain)
+        }
+      })
+  }
+
   const extractPokemon = (data, setData) => {
     data.forEach(datum => {
-      axios.get(datum.url)
+      return axios.get(datum.url)
         .then(res => {
           setData( prev => ([ ...prev,
             {
@@ -28,6 +40,7 @@ export default function PokemonList(props) {
               species: res.data.species.url
             }
           ]))
+          getEvolution(res.data.species.url)
         })
     })
   }
@@ -35,7 +48,7 @@ export default function PokemonList(props) {
   useEffect(() => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=150`)
       .then(res => {
-        extractPokemon(res.data.results, setData)
+        return extractPokemon(res.data.results, setData)
       })
       .catch(err => console.log("Err", err))
   }, [])
@@ -53,6 +66,9 @@ export default function PokemonList(props) {
         types={pokemon.types}
         species={pokemon.species}
         page={props.page}
+        setPokemon={setPokemon}
+        pokemonClicked={pokemonClicked}
+        evolvesTo={evolutionChain[pokemon.name]}
       />
     )
   })
