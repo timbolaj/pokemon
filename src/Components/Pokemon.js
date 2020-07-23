@@ -18,33 +18,52 @@ export default function Pokemon(props) {
 
   const assignClassName = (id, page) => {
     if (page === 1) {
-      if (id <= 50) {
+      if (id <= 25) {
         return 'show';
       }
       return 'hide';
     }
 
     if (page === 2) {
-      if (id > 50 && id <= 100) {
+      if (id > 25 && id <= 50) {
+        return 'show';
+      }
+      return 'hide';
+    }
+
+    if (page === 3) {
+      if (id > 50 && id <= 75) {
         return 'show';
       }
 
       return 'hide';
     }
 
-    if (page === 3) {
-      if (id >= 100) {
+    if (page === 4) {
+      if (id > 75 && id <= 100) {
         return 'show'
       }
       return 'hide'
     }
+
+    if (page === 5) {
+      if (id > 100 && id <= 125) {
+        return 'show'
+      }
+      return 'hide';
+    }
+
+    if (page === 6) {
+      if (id <= 150 && id > 125) {
+        return 'show';
+      }
+      return 'hide';
+    }
   }
   return (
     <div id={id} className={assignClassName(id, page)}>
-      <div>{name}</div>
-      <div>{height}</div>
-      <div>{weight}</div>
       <img src={sprite}/>
+      <div>{name}</div>
     </div>
   )
 }
