@@ -47,21 +47,24 @@ export default function PokemonList() {
       .catch(err => console.log("Err", err))
   }, [])
 
-  // const pokemonData = pokeData.map(pokemon => {
+  const pokemonData = pokeData.map(pokemon => {
 
-  //   return (
-  //     <Pokemon
-  //       name={pokemon.name}
-  //       url={pokemon.url}
-  //     />
-  //   )
-  // })
-
-  console.log(pokeData);
+    return (
+      <Pokemon
+        key={pokemon.id}
+        name={pokemon.name}
+        height={pokemon.height}
+        weight={pokemon.weight}
+        sprite={pokemon.sprite}
+        types={pokemon.types}
+        species={pokemon.species}
+      />
+    )
+  })
 
   return (
     <div>
-      {/* {pokemonData} */}
+      {pokemonData}
     </div>
   )
 }
