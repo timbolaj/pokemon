@@ -4,8 +4,7 @@ const axios = require('axios');
 
 export default function PokemonList(props) {
   const [pokeData, setData] = useState([]);
-  const [pokemonClicked, setPokemon] = useState();
-  const evolutionChain = {};
+  const [evolutionChain, setEvolution] = useState({});
 
   const extractTypes = typesArr => {
     let typesList = [];
@@ -19,8 +18,10 @@ export default function PokemonList(props) {
     return axios.get(url)
       .then(res => {
         if (res.data.evolves_from_species) {
-          evolutionChain[res.data.name] = res.data.evolves_from_species.name
-          console.log(evolutionChain)
+          const parent = res.data.name;
+          const child = res.data.evolves_from_species.name;
+
+          setEvolution((prev) => ({ ...prev, [child]: parent }))
         }
       })
   }
@@ -64,11 +65,8 @@ export default function PokemonList(props) {
         weight={pokemon.weight}
         sprite={pokemon.sprite}
         types={pokemon.types}
-        species={pokemon.species}
         page={props.page}
-        setPokemon={setPokemon}
-        pokemonClicked={pokemonClicked}
-        evolvesTo={evolutionChain[pokemon.name]}
+        evolvesTo={evolutionChain}
       />
     )
   })
