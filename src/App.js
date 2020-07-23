@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import PokemonList from '../src/Components/PokemonList'
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
 
   return (
     <div className="App">
-      <p onClick={togglePage}>click me</p>
       <PokemonList page={page} />
+      <p onClick={togglePage}>click me</p>
     </div>
   );
 }
