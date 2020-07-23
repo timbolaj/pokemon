@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import '../Styles/Pokemon.scss';
 
 export default function Pokemon(props) {
-  const [ancestor, setAncestor] = useState([]);
   const { id, name, height, weight, sprite, types, page, evolvesTo } = props
 
   const assignClassName = (id, page) => {
@@ -55,18 +53,20 @@ export default function Pokemon(props) {
     return word.replace(word.charAt(0), word.charAt(0).toUpperCase());
   }
 
+  const link = `#${evolvesTo[name]}`
+
   return (
     <div id={id} className={assignClassName(id, page)}>
       <div className="name-sprite">
-        <img src={sprite} />
+        <a id={name}><img src={sprite} /></a>
         <p>{name.toUpperCase()}</p>
       </div>
 
       <div className="description">
         <p>{capitalizeFirstLetter(name)} is a {types[0]}-type pokemon.</p>
-        <p> It has a weight of {weight/10} kilgrams and a height of {height/10} metres. </p>
+        <p> It has a weight of {weight / 10} {weight / 10 === 1 && 'kilogram'} {weight / 10 !== 1 && 'kilograms'} and a height of {height / 10} {height/10 === 1 && 'metre'}{height/10 !== 1 && 'metres'}. </p>
         {evolvesTo[name] &&
-          <p> {capitalizeFirstLetter(name)} evolves into {evolvesTo[name]}.</p>
+          <p>{capitalizeFirstLetter(name)} evolves into <a href={link}>{evolvesTo[name]}</a>.</p>
         }
       </div>
 
