@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.scss';
-import PokemonList from '../src/Components/PokemonList'
+import PokemonList from '../src/Components/PokemonList';
+import Nav from '../src/Components/Nav';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="App">
+      <Nav />
       <PokemonList page={page} />
       <p onClick={togglePage}>click me</p>
     </div>
