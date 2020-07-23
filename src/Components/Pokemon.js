@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../../src/Pokemon.scss';
+import '../Styles/Pokemon.scss';
 
 export default function Pokemon(props) {
   const [ancestor, setAncestor] = useState([]);

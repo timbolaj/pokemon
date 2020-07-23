@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
-import './App.scss';
+import './Styles/App.scss';
 import PokemonList from '../src/Components/PokemonList';
 import Nav from '../src/Components/Nav';
 
