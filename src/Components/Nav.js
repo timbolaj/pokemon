@@ -3,8 +3,8 @@ import '../Styles/Nav.scss';
 
 export default function Nav() {
   return (
-    <div className='navbar'>
+    <nav className='navbar'>
       <h1>Pokedex</h1>
-    </div>
+    </nav>
   )
 }
