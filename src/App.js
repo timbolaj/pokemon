@@ -8,6 +8,7 @@ import Loading from './Components/Loading';
 
 const INDEX = 'index';
 const POKEDEX = 'pokedex';
+const LOADING = 'loading';
 
 function App() {
 
@@ -16,21 +17,25 @@ function App() {
 
   const togglePage = (val = false) => {
     if (!val) {
-      return setPage(page + 1);
+      toggleMode();
+      setPage(page + 1);
     }
+
+    toggleMode();
     return setPage(val)
   }
 
   const toggleMode = () => {
-    if (mode === INDEX) {
+    setMode(LOADING)
+    setTimeout(() => {
       setMode(POKEDEX)
-    }
+    }, 1500)
   }
 
   return (
     <div className="App">
-      <Loading />
       <Nav />
+      {mode === LOADING && <Loading />}
       {mode === INDEX && <Home toggleMode={toggleMode}/>}
       {mode === POKEDEX &&
         <div>
