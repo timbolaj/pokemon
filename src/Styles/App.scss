@@ -6,4 +6,11 @@
   align-items: center;
   background-color: blue;
   border: solid;
+  animation-name: app-page;
+  animation-duration: 1.5s
+}
+
+@keyframes app-page {
+  0% {opacity: 0;}
+  100% {opacity: 100;}
 }
