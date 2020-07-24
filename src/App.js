@@ -4,6 +4,7 @@ import PokemonList from '../src/Components/PokemonList';
 import Nav from '../src/Components/Nav';
 import PaginationBar from './Components/PaginationBar';
 import Home from './Components/Home';
+import Loading from './Components/Loading';
 
 const INDEX = 'index';
 const POKEDEX = 'pokedex';
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className="App">
+      <Loading />
       <Nav />
       {mode === INDEX && <Home toggleMode={toggleMode}/>}
       {mode === POKEDEX &&
