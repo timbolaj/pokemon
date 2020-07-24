@@ -5,5 +5,18 @@
 }
 
 .home img {
-  height: 20em
+  height: 17em;
+}
+
+.prompt {
+  display: flex;
+  justify-content: center;
+}
+
+.prompt p {
+  align-self: center;
+}
+
+.prompt .pokeball {
+  height: 4.5em;
 }

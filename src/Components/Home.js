@@ -21,8 +21,18 @@ export default function Home(props) {
   return (
     <div className='home'>
       <h1>Welcome to the Pokédex</h1>
-      <p>A website that hosts a collection of pokemon-related information</p>
       <img src={homeImage}/>
+      <p>A website that hosts a collection of pokemon-related information</p>
+      <div className="prompt">
+        <p>Ready to start? Click the pokeball!: </p>
+        <img
+          src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/poke-ball.png?raw=true"
+          className="pokeball"
+          onClick={toggleMode}
+        />
+      </div>
+      
+
     </div>
   )
 }

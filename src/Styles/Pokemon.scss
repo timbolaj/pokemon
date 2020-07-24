@@ -3,6 +3,8 @@
   border: solid;
   align-items: center;
   width: 50em;
+  animation-name: pokemonList;
+  animation-duration: 2s;
 }
 
 .hide {
@@ -40,4 +42,9 @@ img {
 
 .description p {
   line-height: 0em;
+}
+
+@keyframes pokemonList {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }

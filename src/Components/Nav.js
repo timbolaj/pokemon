@@ -4,7 +4,7 @@ import '../Styles/Nav.scss';
 export default function Nav() {
   return (
     <nav className='navbar'>
-      <h1>Pokedex</h1>
+      <h1>Pokédex</h1>
     </nav>
   )
 }
