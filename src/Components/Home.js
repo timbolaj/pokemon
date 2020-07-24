@@ -5,8 +5,10 @@ import axios from 'axios';
 export default function Home(props) {
 
   const { toggleMode } = props;
-
   const [homeImage, setImage] = useState();
+  const getImage = (img, setImage) => {
+    return setImage(img);
+  }
 
   useEffect(() => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/pikachu`)
@@ -14,9 +16,6 @@ export default function Home(props) {
         return getImage(res.data.sprites.front_shiny, setImage);
       })
   }, [])
-  const getImage = (img, setImage) => {
-    return setImage(img);
-  }
 
   return (
     <div className='home'>
