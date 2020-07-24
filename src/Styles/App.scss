@@ -10,6 +10,12 @@
   animation-duration: 1.5s
 }
 
+.paginate {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 @keyframes app-page {
   0% {opacity: 0;}
   100% {opacity: 100;}

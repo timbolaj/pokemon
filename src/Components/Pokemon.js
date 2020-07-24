@@ -63,7 +63,7 @@ export default function Pokemon(props) {
       </div>
 
       <div className="description">
-        <p>{capitalizeFirstLetter(name)} is {'aeiou'.includes(types[0][0]) && 'an'} {'aeiou'.includes(!types[0][0]) && 'a'} {types[0]}-type pokemon</p>
+        <p>{capitalizeFirstLetter(name)} is {'aeiou'.includes(types[0][0]) && 'an'} {!'aeiou'.includes(types[0][0]) && 'a'} {types[0]}-type pokemon</p>
         <p> It has a weight of {weight / 10} {weight / 10 === 1 && 'kilogram'} {weight / 10 !== 1 && 'kilograms'} and a height of {height / 10} {height/10 === 1 && 'metre'}{height/10 !== 1 && 'metres'}</p>
         {evolvesTo[name] &&
           <p>{capitalizeFirstLetter(name)} evolves into <a href={link}>{evolvesTo[name]}</a></p>
