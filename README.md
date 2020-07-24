@@ -7,6 +7,7 @@ A web app that acts as a pokédex (like a pokemon encyclopedia) with select info
 ## Final Product
 
 !["Landing page"](https://github.com/timbolaj/pokemon/blob/master/images/Pokedex-home.png?raw=true)
+
 !["PokemonList page"](https://github.com/timbolaj/pokemon/blob/master/images/pokedex-info.png?raw=true)
 
 ## Getting Started
