@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const extractTypes = typesArr => {
+export const extractTypes = typesArr => {
   let typesList = [];
   typesArr.forEach(typ => {
     typesList.push(typ.type.name)
@@ -8,7 +8,7 @@ const extractTypes = typesArr => {
   return typesList;
 }
 
-const getEvolution = (url, setEvolution) => {
+export const getEvolution = (url, setEvolution) => {
   return axios.get(url)
     .then(res => {
       if (res.data.evolves_from_species) {
