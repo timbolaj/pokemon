@@ -41,3 +41,9 @@ describe("assignClassname", () => {
     expect(assignClassName(150, 6)).toBe('entry show');
   })
 })
+
+describe("capitalizeFirstLetter", () => {
+  it("Should capitalize the first letter of the word passed into it", () => {
+    expect(capitalizeFirstLetter('hello')).toBe('Hello');
+  })
+})
