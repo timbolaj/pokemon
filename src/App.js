@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './Styles/App.scss';
 import PokemonList from '../src/Components/PokemonList';
 import Nav from '../src/Components/Nav';
