@@ -10,7 +10,7 @@ export default function Pokemon(props) {
     <div id={id} className={assignClassName(id, page)}>
       <div className="name-sprite">
         <a id={name}><img src={sprite} alt="sprite-img" /></a>
-        <p>{name.toUpperCase()}</p>
+        <p>{name?.toUpperCase()}</p>
       </div>
 
       <div className="description">
