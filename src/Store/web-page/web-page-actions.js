@@ -1,11 +1,11 @@
-export const index = {
+export const setIndex = {
   type: 'index',
 };
 
-export const pokedex = {
+export const setPokedex = {
   type: 'pokedex',
 };
 
-export const loading = {
+export const setLoading = {
   type: 'loading',
 };

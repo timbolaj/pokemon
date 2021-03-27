@@ -12,17 +12,13 @@ const POKEDEX = 'pokedex';
 const LOADING = 'loading';
 
 function App() {
-
   const [page, setPage] = useState(1);
-  const [mode, setMode] = useState(INDEX)
+  const [mode, setMode] = useState();
 
   const togglePage = (val = false) => {
     if (!val) {
-      toggleMode();
       setPage(page + 1);
     }
-
-    toggleMode();
     return setPage(val)
   }
 
@@ -31,13 +27,17 @@ function App() {
     setMode(state.mode);
   }
 
+  if (!mode) {
+    toggleMode();
+  }
+
   webPageStore.subscribe(toggleMode);
 
   return (
     <div className="App">
       <Nav />
       {mode === LOADING && <Loading />}
-      {mode === INDEX && <Home toggleMode={toggleMode}/>}
+      {mode === INDEX && <Home/>}
       {mode === POKEDEX &&
         <div>
           <PokemonList page={page} togglePage={togglePage} />
