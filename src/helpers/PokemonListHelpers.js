@@ -19,22 +19,25 @@ export const getEvolution = (url, setEvolution) => {
     })
 }
 
-export const extractPokemon = (data, setData, setEvolution) => {
+export const extractPokemon = (data, setData, setEvolution, limit) => {
+  const pokemons = [];
   data.forEach(datum => {
     return axios.get(datum.url)
       .then(res => {
-        setData( prev => ([ ...prev,
-          {
-            name: res.data.name,
-            height: res.data.height,
-            weight: res.data.weight,
-            id: res.data.id,
-            sprite: res.data.sprites.front_default,
-            types: extractTypes(res.data.types),
-            species: res.data.species.url
-          }
-        ]))
-        getEvolution(res.data.species.url, setEvolution)
-      })
-  })
+        pokemons.push({
+          name: res.data.name,
+          height: res.data.height,
+          weight: res.data.weight,
+          id: res.data.id,
+          sprite: res.data.sprites.front_default,
+          types: extractTypes(res.data.types),
+          species: res.data.species.url
+        });
+        getEvolution(res.data.species.url, setEvolution);
+        
+        if (pokemons.length === limit) {
+          setData(pokemons);
+        }
+      });
+  });
 }

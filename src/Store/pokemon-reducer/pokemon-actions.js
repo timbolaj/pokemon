@@ -4,3 +4,10 @@ export const setPage = val => {
     pageNumber: val,
   };
 };
+
+export const setPokemon = val => {
+  return {
+    type: 'setPokemon',
+    pokemon: val,
+  };
+};

@@ -1,9 +1,0 @@
-* Create store for the 3 modes:
-  loading, index and pokedex - DONE
-  List of pokemon, pagination
-
-* Fix the pagination for the pokemon
-
-* React-router
-
-* When click on pikachu, have pikachu do some animation
