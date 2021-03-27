@@ -1,11 +1,13 @@
 import React from 'react';
 import '../Styles/PaginationBar.scss';
+import { pokemonStore } from '../Store/pokemon-reducer/pokemon-reducer';
+import * as pokemonStoreActions from '../Store/pokemon-reducer/pokemon-actions';
 
-export default function PaginationBar(props) {
+export default function PaginationBar() {
 
-  const { page, togglePage } = props;
-
-  console.log(page)
+  const togglePage = num => {
+    pokemonStore.dispatch(pokemonStoreActions.setPage(num));
+  }
 
   return (
     <div className="Pagination-bar">
