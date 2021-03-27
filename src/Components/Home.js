@@ -31,8 +31,6 @@ export default function Home(props) {
           alt="poke-ball"
         />
       </div>
-      
-
     </div>
   )
 }

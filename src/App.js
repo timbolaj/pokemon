@@ -5,6 +5,7 @@ import Nav from '../src/Components/Nav';
 import PaginationBar from './Components/PaginationBar';
 import Home from './Components/Home';
 import Loading from './Components/Loading';
+import { webPageStore } from './Store/web-page/web-page-reducer'
 
 const INDEX = 'index';
 const POKEDEX = 'pokedex';
@@ -26,11 +27,11 @@ function App() {
   }
 
   const toggleMode = () => {
-    setMode(LOADING)
-    setTimeout(() => {
-      setMode(POKEDEX)
-    }, 1500)
+    const state = webPageStore.getState();
+    setMode(state.mode);
   }
+
+  webPageStore.subscribe(toggleMode);
 
   return (
     <div className="App">

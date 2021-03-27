@@ -1,0 +1,7 @@
+* Create store for the 3 modes:
+  loading, index and pokedex
+  List of pokemon, pagination
+
+* Fix the pagination for the pokemon
+
+* React-router
