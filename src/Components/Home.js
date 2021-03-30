@@ -27,7 +27,9 @@ export default function Home() {
   return (
     <div className='home'>
       <h1>Welcome to the Pokédex</h1>
-      <img src={homeImage} alt="home-img"/>
+      <div className='img-container'>
+        <img src={homeImage} alt="home-img"/>
+      </div>
       <p>A website that hosts a collection of pokemon-related information</p>
       <div className="prompt">
         <p>Ready to start? Click the pokeball! </p>
