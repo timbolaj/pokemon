@@ -1,0 +1,32 @@
+.error-page {
+  width: 95vw;
+  height: 79.5vh;
+  background-color: white;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  padding-top: 1.5rem;
+}
+
+.error-text {
+  margin-top: 5rem;
+}
+
+.error-message {
+  margin-top: 2rem;
+
+  img {
+    animation-name: bad-Load;
+    animation-duration: 4s;
+  }
+}
+
+.App {
+  background-color: white;
+}
+
+@keyframes bad-Load {
+  0% { opacity: 0; }
+  75% { opacity: 0; }
+  100% { opacity: 1; }
+}
