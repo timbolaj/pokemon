@@ -15,8 +15,6 @@ export default function PokemonList() {
   const [pokeData, setPokeData] = useState([]);
   const hasError = false;
 
-  let initialLoad = true;
-
   useEffect(() => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`)
       .then(res => {
@@ -27,14 +25,12 @@ export default function PokemonList() {
 
   const setPokemon = pokemons => {
     pokemonStore.dispatch(pokemonActions.setPokemon(pokemons))
+    pokemonStore.dispatch(pokemonActions.setPage(1));
   }
 
   const handleStoreChanges = () => {
-    const { pageNumber, pokemon } = pokemonStore.getState();
-    if (initialLoad) {
-      setPokeData(pokemon);
-      initialLoad = false;
-    }
+    const { pageNumber, pokemonToDisplay } = pokemonStore.getState();
+    setPokeData(pokemonToDisplay);
     togglePage(pageNumber);
   }
 
