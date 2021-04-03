@@ -3,6 +3,10 @@ import '../Styles/Home.scss';
 import axios from 'axios';
 import * as webPageActions from '../Store/web-page/web-page-actions';
 import { webPageStore } from '../Store/web-page/web-page-reducer';
+import {
+  BrowserRouter as Router,
+  Link
+} from 'react-router-dom';
 
 export default function Home() {
   const [homeImage, setImage] = useState();
@@ -33,11 +37,13 @@ export default function Home() {
       <p>A website that hosts a collection of pokemon-related information</p>
       <div className="prompt">
         <p>Ready to start? Click the pokeball! </p>
-        <img
+        <Link to="/pokemon">
+          <img
           src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/poke-ball.png?raw=true"
           className="pokeball"
           onClick={toggleMode}
-          alt="poke-ball"/>
+          alt="poke-ball"/>          
+        </Link>
       </div>
     </div>
   )

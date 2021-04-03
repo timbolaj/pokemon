@@ -3,6 +3,7 @@ import Pokemon from './Pokemon';
 import { extractPokemon } from '../helpers/PokemonListHelpers';
 import { pokemonStore } from '../Store/pokemon-reducer/pokemon-reducer';
 import * as pokemonActions from '../Store/pokemon-reducer/pokemon-actions';
+import PaginationBar from './PaginationBar';
 
 const axios = require('axios');
 const LIMIT = 150;
@@ -60,6 +61,7 @@ export default function PokemonList() {
   return (
     <div>
       {pokemonData}
+      <PaginationBar/>
     </div>
   );
 }
