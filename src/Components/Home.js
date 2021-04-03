@@ -4,7 +4,6 @@ import axios from 'axios';
 import * as webPageActions from '../Store/web-page/web-page-actions';
 import { webPageStore } from '../Store/web-page/web-page-reducer';
 import {
-  BrowserRouter as Router,
   Link
 } from 'react-router-dom';
 

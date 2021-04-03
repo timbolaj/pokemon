@@ -4,6 +4,7 @@ import { extractPokemon } from '../helpers/PokemonListHelpers';
 import { pokemonStore } from '../Store/pokemon-reducer/pokemon-reducer';
 import * as pokemonActions from '../Store/pokemon-reducer/pokemon-actions';
 import PaginationBar from './PaginationBar';
+import ErrorPage from './Error';
 
 const axios = require('axios');
 const LIMIT = 150;
@@ -12,6 +13,7 @@ export default function PokemonList() {
   const [evolutionChain, setEvolution] = useState({});
   const [page, setPage] = useState(1);
   const [pokeData, setPokeData] = useState([]);
+  const hasError = false;
 
   let initialLoad = true;
 
@@ -20,7 +22,7 @@ export default function PokemonList() {
       .then(res => {
         return extractPokemon(res.data.results, setPokemon, setEvolution, LIMIT);
       })
-      .catch(err => console.log("Err", err));
+      .catch(() => hasError = true);
   }, []);
 
   const setPokemon = pokemons => {
@@ -60,8 +62,13 @@ export default function PokemonList() {
 
   return (
     <div>
-      {pokemonData}
-      <PaginationBar/>
+      {hasError && <ErrorPage />}
+      {!hasError &&
+        <div>
+          {pokemonData}
+          <PaginationBar />
+        </div>
+      }
     </div>
   );
 }
