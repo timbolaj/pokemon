@@ -7,7 +7,7 @@ export default function Pokemon(props) {
   const link = `#${evolvesTo[name]}`
 
   return (
-    <div id={id} className={assignClassName(id, page)}>
+    <div id={id} className="entry">
       <div className="name-sprite">
         <a id={name}><img src={sprite} alt="sprite-img" /></a>
         <p>{name?.toUpperCase()}</p>

@@ -11,7 +11,6 @@ const LIMIT = 150;
 
 export default function PokemonList() {
   const [evolutionChain, setEvolution] = useState({});
-  const [page, setPage] = useState(1);
   const [pokeData, setPokeData] = useState([]);
   const hasError = false;
 
@@ -29,13 +28,8 @@ export default function PokemonList() {
   }
 
   const handleStoreChanges = () => {
-    const { pageNumber, pokemonToDisplay } = pokemonStore.getState();
+    const { pokemonToDisplay } = pokemonStore.getState();
     setPokeData(pokemonToDisplay);
-    togglePage(pageNumber);
-  }
-
-  const togglePage = (number) => {
-    setPage(number);
   }
 
   pokemonStore.subscribe(handleStoreChanges);
@@ -50,7 +44,6 @@ export default function PokemonList() {
         weight={pokemon?.weight}
         sprite={pokemon?.sprite}
         types={pokemon?.types}
-        page={page}
         evolvesTo={evolutionChain}
       />
     );
