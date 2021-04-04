@@ -1,6 +1,6 @@
-export function pokemonPageFilter(page, list) {
-  const startIdx = (page - 1) * 25;
-  const endIdx = page * 25;
+export function pokemonPageFilter(page, list, quantityPerPage) {
+  const startIdx = (page - 1) * quantityPerPage;
+  const endIdx = page * quantityPerPage;
 
   return list.slice(startIdx, endIdx);
 }

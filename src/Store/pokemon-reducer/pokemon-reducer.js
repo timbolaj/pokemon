@@ -10,11 +10,11 @@ const initialState = {
 function pokemonReducer(state = initialState, action) {
   switch (action.type) {
     case 'setPokemon':
-      state.pokemon = [...state.pokemon, ...action.pokemon];
+      state.pokemon = action.pokemon;
       return state;
     case 'setPage':
       state.pageNumber = action.pageNumber;
-      state.pokemonToDisplay = pokemonPageFilter(state.pageNumber, state.pokemon)
+      state.pokemonToDisplay = pokemonPageFilter(state.pageNumber, state.pokemon, 25)
       return state;
     default:
       return state;

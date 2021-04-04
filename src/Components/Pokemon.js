@@ -1,9 +1,9 @@
 import React from 'react';
-import { assignClassName, capitalizeFirstLetter } from '../helpers/PokemonHelpers'
+import { capitalizeFirstLetter } from '../helpers/PokemonHelpers'
 import '../Styles/Pokemon.scss';
 
 export default function Pokemon(props) {
-  const { id, name, height, weight, sprite, types, page, evolvesTo } = props
+  const { id, name, height, weight, sprite, types, evolvesTo } = props
   const link = `#${evolvesTo[name]}`
 
   return (
