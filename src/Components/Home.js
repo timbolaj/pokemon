@@ -14,7 +14,6 @@ export default function Home() {
   }
 
   const toggleMode = () => {
-    webPageStore.dispatch(webPageActions.setLoading);
     setTimeout(() => {
       webPageStore.dispatch(webPageActions.setPokedex);
     }, 2000);

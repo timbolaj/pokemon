@@ -5,7 +5,3 @@ export const setIndex = {
 export const setPokedex = {
   type: 'pokedex',
 };
-
-export const setLoading = {
-  type: 'loading',
-};
