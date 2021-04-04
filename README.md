@@ -2,7 +2,7 @@
 
 A web app that acts as a pokédex (like a pokemon encyclopedia) with select information on 150 pokemons.
 
-* Front-end: React, CSS, bootstrap
+* Front-end: React, CSS, bootstrap, react-router, redux
 
 ## Final Product
 
