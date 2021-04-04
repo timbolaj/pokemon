@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Pokemon from './Pokemon';
 import { extractPokemon } from '../helpers/PokemonListHelpers';
 import { pokemonStore } from '../Store/pokemon-reducer/pokemon-reducer';
 import * as pokemonActions from '../Store/pokemon-reducer/pokemon-actions';
+
 import PaginationBar from './PaginationBar';
+import Pokemon from './Pokemon';
 import ErrorPage from './Error';
+import Loading from './Loading';
 
 const axios = require('axios');
 const LIMIT = 150;
@@ -12,14 +14,15 @@ const LIMIT = 150;
 export default function PokemonList() {
   const [evolutionChain, setEvolution] = useState({});
   const [pokeData, setPokeData] = useState([]);
-  const hasError = false;
+  const [loading, setLoading] = useState(true);
+  const [hasError, setError] = useState(false);
 
   useEffect(() => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`)
       .then(res => {
-        return extractPokemon(res.data.results, setPokemon, setEvolution, LIMIT);
+        extractPokemon(res.data.results, setPokemon, setEvolution, LIMIT);
       })
-      .catch(() => hasError = true);
+      .catch(() => setError(true));
   }, []);
 
   const setPokemon = pokemons => {
@@ -28,8 +31,10 @@ export default function PokemonList() {
   }
 
   const handleStoreChanges = () => {
+    setLoading(true);
     const { pokemonToDisplay } = pokemonStore.getState();
     setPokeData(pokemonToDisplay);
+    setLoading(false);
   }
 
   pokemonStore.subscribe(handleStoreChanges);
@@ -52,6 +57,7 @@ export default function PokemonList() {
   return (
     <div>
       {hasError && <ErrorPage />}
+      {loading && <Loading/>}
       {!hasError &&
         <div>
           {pokemonData}

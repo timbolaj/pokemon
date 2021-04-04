@@ -19,13 +19,4 @@ describe('webPageStore', () => {
       mode: 'pokedex',
     });
   });
-
-  it('should set mode to loading if passed loading', () => {
-    webPageStore.dispatch(actions.setLoading);
-    const result = webPageStore.getState();
-
-    expect(result).toEqual({
-      mode: 'loading',
-    });
-  });
 });
