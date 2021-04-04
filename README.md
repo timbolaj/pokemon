@@ -21,6 +21,8 @@ A web app that acts as a pokédex (like a pokemon encyclopedia) with select info
 * Node-sass 4.14.1 and above
 * axios
 * classnames
+* react-router
+* redux
 * react 16.13.1 and above
 * react-bootstrap 
 * react-dom 
