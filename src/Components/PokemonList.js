@@ -11,11 +11,8 @@ const LIMIT = 150;
 
 export default function PokemonList() {
   const [evolutionChain, setEvolution] = useState({});
-  const [page, setPage] = useState(1);
   const [pokeData, setPokeData] = useState([]);
   const hasError = false;
-
-  let initialLoad = true;
 
   useEffect(() => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=${LIMIT}`)
@@ -27,19 +24,12 @@ export default function PokemonList() {
 
   const setPokemon = pokemons => {
     pokemonStore.dispatch(pokemonActions.setPokemon(pokemons))
+    pokemonStore.dispatch(pokemonActions.setPage(1));
   }
 
   const handleStoreChanges = () => {
-    const { pageNumber, pokemon } = pokemonStore.getState();
-    if (initialLoad) {
-      setPokeData(pokemon);
-      initialLoad = false;
-    }
-    togglePage(pageNumber);
-  }
-
-  const togglePage = (number) => {
-    setPage(number);
+    const { pokemonToDisplay } = pokemonStore.getState();
+    setPokeData(pokemonToDisplay);
   }
 
   pokemonStore.subscribe(handleStoreChanges);
@@ -54,7 +44,6 @@ export default function PokemonList() {
         weight={pokemon?.weight}
         sprite={pokemon?.sprite}
         types={pokemon?.types}
-        page={page}
         evolvesTo={evolutionChain}
       />
     );

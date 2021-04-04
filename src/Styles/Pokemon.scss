@@ -1,12 +1,3 @@
-.show {
-  display: flex;
-  border: solid;
-  align-items: center;
-  width: 50em;
-  animation-name: pokemonList;
-  animation-duration: 3s;
-}
-
 .hide {
   display: none;
 }
@@ -28,6 +19,12 @@ img {
 
 .entry {
   background-color: white;
+  display: flex;
+  border: solid;
+  align-items: center;
+  width: 50em;
+  animation-name: pokemonList;
+  animation-duration: 3s;
 }
 
 .description {
