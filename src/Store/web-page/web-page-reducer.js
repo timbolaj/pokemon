@@ -12,9 +12,6 @@ function webPageReducer(state = initialState, action) {
     case 'pokedex':
       state.mode = 'pokedex';
       return state;
-    case 'loading':
-      state.mode = 'loading';
-      return state;
     default:
       return state;
   };
