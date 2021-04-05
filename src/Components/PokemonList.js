@@ -58,10 +58,10 @@ export default function PokemonList() {
     <div>
       {hasError && <ErrorPage />}
       {loading && <Loading/>}
-      {!hasError &&
+      {!hasError && !loading &&
         <div>
           {pokemonData}
-          <PaginationBar />
+          <PaginationBar/>
         </div>
       }
     </div>
